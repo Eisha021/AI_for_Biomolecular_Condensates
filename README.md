@@ -6,10 +6,14 @@ This project is a simple educational Streamlit web app that conceptually explore
 The app demonstrates how AI models, even simple ones, can be used to represent biological hypotheses and visualize potential trends.
 
 ⚠️ This tool is for educational and illustrative purposes only — not based on real experimental data.
+
 🔍 Background
 
 Biomolecular condensates are membraneless organelles that form through phase separation of proteins and nucleic acids.
 Understanding their formation and stability is central to explaining mechanisms underlying cellular organization, neurodegenerative diseases, and cancer biology.
+
+This demo draws conceptual inspiration from Professor Anisha Shakya’s research on condensate biophysics and molecular organization in disease.
+
 🚀 Features
 
 Interactive Streamlit interface for inputting basic molecular parameters.
