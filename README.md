@@ -15,6 +15,7 @@ The app demonstrates how **AI models**, even simple ones, can be used to represe
 Biomolecular condensates are **membraneless organelles** that form through **phase separation** of proteins and nucleic acids.  
 Understanding their formation and stability is central to explaining mechanisms underlying **cellular organization**, **neurodegenerative diseases**, and **cancer biology**.
 
+This demo draws conceptual inspiration from **research on condensate biophysics and molecular organization in disease.**
 
 ---
 
@@ -23,5 +24,17 @@ Understanding their formation and stability is central to explaining mechanisms 
 - Interactive **Streamlit interface** for inputting basic molecular parameters  
 - Uses a simple **logistic regression model** to estimate condensate formation likelihood  
 - Displays **real-time predictions** with confidence scores  
-- Serves as an introductory example for how **machine learning can support hypothesis-building** in biological systems
+- Serves as an introductory example for how **machine learning can support hypothesis-building** in biological systems  
+
+---
+
+## 🌐 Live Demo
+
+You can try the app here:  
+👉 **[AI for Biomolecular Condensates – Live Demo](https://bio-condensate-ai--itseisha123.replit.app)**  
+
+---
+
+
+
 
