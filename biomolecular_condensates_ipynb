@@ -1,0 +1,62 @@
+# ------------------------------------------------------------
+# AI for Biomolecular Condensates
+# A simple, educational web app that shows how physicochemical
+# properties might influence condensate formation propensity.
+# ------------------------------------------------------------
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LogisticRegression
+
+# ---- App title and intro ----
+st.title("🧬 AI for Biomolecular Condensates")
+
+st.write("""
+This educational demo shows how a basic AI model could estimate the
+**propensity of a biomolecule to form condensates** based on a few
+simplified biophysical properties.
+
+⚠️ Note: This is *not* based on experimental data.  
+It’s a simple conceptual model to demonstrate how AI can help explore
+biological ideas.
+""")
+
+# ---- User inputs ----
+st.header("Input Molecular Properties")
+
+charge = st.slider("Net Charge", -10.0, 10.0, 0.0, step=0.5)
+hydrophobicity = st.slider("Hydrophobicity Index (0–1)", 0.0, 1.0, 0.5, step=0.1)
+disorder = st.slider("Fraction of Intrinsic Disorder (0–1)", 0.0, 1.0, 0.4, step=0.1)
+length = st.slider("Molecule Length (residues/nucleotides)", 50, 2000, 500, step=50)
+
+# ---- Example training data ----
+# These points define general trends only, not real biology.
+data = pd.DataFrame({
+    "Charge": [-8, -3, 0, 5, 7],
+    "Hydrophobicity": [0.1, 0.3, 0.5, 0.7, 0.9],
+    "Disorder": [0.8, 0.6, 0.5, 0.3, 0.2],
+    "Length": [200, 500, 800, 1200, 1500],
+    "Condensate": [1, 1, 0, 0, 0]
+})
+
+X = data[["Charge", "Hydrophobicity", "Disorder", "Length"]]
+y = data["Condensate"]
+
+# ---- Train a simple logistic regression model ----
+model = LogisticRegression()
+model.fit(X, y)
+
+# ---- Make prediction for user input ----
+user_input = np.array([[charge, hydrophobicity, disorder, length]])
+prediction = model.predict(user_input)[0]
+probability = model.predict_proba(user_input)[0][1]
+
+# ---- Display result ----
+st.header("Prediction Result")
+if prediction == 1:
+    st.success(f"High Condensate Formation Propensity (Confidence: {probability:.2f})")
+else:
+    st.warning(f"Low Condensate Formation Propensity (Confidence: {probability:.2f})")
+
+st.caption("For educational use — demonstrates basic AI modeling concepts.")
